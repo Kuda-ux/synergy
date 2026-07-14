@@ -1,15 +1,16 @@
+import Image from "next/image";
 import {
   CircuitBoard,
   FileText,
   MessageCircle,
   ShieldCheck,
+  Star,
   Store,
   Truck,
   Wrench,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { CONTACT } from "@/lib/constants";
-import { LogoMark } from "@/components/layout/logo";
 
 export function Hero() {
   return (
@@ -45,10 +46,33 @@ export function Hero() {
             </ButtonLink>
           </div>
         </div>
-        <div className="hidden justify-center lg:flex" aria-hidden>
-          <div className="relative">
-            <div className="absolute -inset-10 rounded-full bg-brand-500/10 blur-3xl" />
-            <LogoMark size={200} className="relative drop-shadow-2xl" />
+        <div className="hidden lg:flex justify-center" aria-label="Featured product: ACEBOTT QD001 ESP32 Smart Car">
+          <div className="relative w-full max-w-sm">
+            <div className="absolute -inset-8 rounded-full bg-brand-500/15 blur-3xl" />
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-brand-700/30">
+              <Image
+                src="/products/qd001-smart-car-01.jpg"
+                alt="ACEBOTT QD001 ESP32 Smart Car Robot Kit — available at Synergy Dynamics Zimbabwe"
+                width={480}
+                height={480}
+                className="w-full object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="font-mono text-xs uppercase tracking-widest text-brand-300">Featured product</p>
+                <p className="mt-0.5 text-sm font-semibold text-white">ACEBOTT QD001 ESP32 Smart Car</p>
+                <div className="mt-1.5 flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={11} className="fill-brand-400 text-brand-400" aria-hidden />
+                  ))}
+                  <span className="ml-1 font-mono text-xs text-ink-muted">Authorised distributor</span>
+                </div>
+              </div>
+            </div>
+            <div className="absolute -right-3 -top-3 rounded-full bg-brand-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
+              In Stock
+            </div>
           </div>
         </div>
       </div>
