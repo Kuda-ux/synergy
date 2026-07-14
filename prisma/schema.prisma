@@ -10,7 +10,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // Neon (or any PostgreSQL) in production; configure DATABASE_URL in env
+  provider = "postgresql"
 }
 
 model Category {

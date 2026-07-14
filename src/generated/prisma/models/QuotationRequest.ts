@@ -1414,6 +1414,7 @@ export type QuotationRequestCreateManyArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many QuotationRequests.
    */
   data: Prisma.QuotationRequestCreateManyInput | Prisma.QuotationRequestCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1432,6 +1433,7 @@ export type QuotationRequestCreateManyAndReturnArgs<ExtArgs extends runtime.Type
    * The data used to create many QuotationRequests.
    */
   data: Prisma.QuotationRequestCreateManyInput | Prisma.QuotationRequestCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**

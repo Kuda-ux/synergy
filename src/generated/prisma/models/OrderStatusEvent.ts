@@ -404,6 +404,7 @@ export type OrderStatusEventCreateOrConnectWithoutOrderInput = {
 
 export type OrderStatusEventCreateManyOrderInputEnvelope = {
   data: Prisma.OrderStatusEventCreateManyOrderInput | Prisma.OrderStatusEventCreateManyOrderInput[]
+  skipDuplicates?: boolean
 }
 
 export type OrderStatusEventUpsertWithWhereUniqueWithoutOrderInput = {
@@ -1194,6 +1195,7 @@ export type OrderStatusEventCreateManyArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many OrderStatusEvents.
    */
   data: Prisma.OrderStatusEventCreateManyInput | Prisma.OrderStatusEventCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1212,6 +1214,7 @@ export type OrderStatusEventCreateManyAndReturnArgs<ExtArgs extends runtime.Type
    * The data used to create many OrderStatusEvents.
    */
   data: Prisma.OrderStatusEventCreateManyInput | Prisma.OrderStatusEventCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
