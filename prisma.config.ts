@@ -4,8 +4,9 @@ import { defineConfig } from "prisma/config";
 export default defineConfig({
   schema: "prisma/schema.prisma",
   datasource: {
-    // SQLite file for local development; point at PostgreSQL in production.
-    url: process.env.DATABASE_URL ?? "file:./prisma/dev.db",
+    // Must be a PostgreSQL connection string (e.g. from Neon).
+    // Set DATABASE_URL in .env locally and in Vercel environment variables.
+    url: process.env.DATABASE_URL,
   },
   migrations: {
     seed: "npx tsx prisma/seed.ts",
