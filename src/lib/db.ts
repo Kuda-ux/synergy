@@ -1,3 +1,4 @@
+// @ts-ignore – installed at build time (Vercel); run `npm i @prisma/adapter-pg` locally if needed
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/generated/prisma/client";
 
