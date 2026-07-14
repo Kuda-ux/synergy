@@ -1,0 +1,13 @@
+import "dotenv/config";
+import { defineConfig } from "prisma/config";
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  datasource: {
+    // SQLite file for local development; point at PostgreSQL in production.
+    url: process.env.DATABASE_URL ?? "file:./prisma/dev.db",
+  },
+  migrations: {
+    seed: "npx tsx prisma/seed.ts",
+  },
+});

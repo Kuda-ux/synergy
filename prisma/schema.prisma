@@ -1,0 +1,189 @@
+// Synergy Dynamics commerce schema.
+// Local development uses SQLite; production targets PostgreSQL (e.g. Supabase).
+// The schema deliberately avoids enums and native JSON columns so the same
+// models run on both providers — statuses are validated by Zod in
+// src/lib/constants.ts, and structured fields are validated JSON text.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql" // Neon (or any PostgreSQL) in production; configure DATABASE_URL in env
+}
+
+model Category {
+  id          String     @id @default(cuid())
+  slug        String     @unique
+  name        String
+  description String?
+  iconKey     String? // maps to a lucide icon in the UI
+  sortOrder   Int        @default(0)
+  isFeatured  Boolean    @default(false)
+  parentId    String?
+  parent      Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryTree")
+  products    Product[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Brand {
+  id       String    @id @default(cuid())
+  slug     String    @unique
+  name     String
+  isDemo   Boolean   @default(false)
+  products Product[]
+}
+
+model Product {
+  id                  String         @id @default(cuid())
+  slug                String         @unique
+  sku                 String         @unique
+  name                String
+  shortDescription    String
+  description         String
+  tags                String         @default("") // comma-separated search keywords
+  specsJson           String         @default("[]") // [{ group, label, value }]
+  packageContentsJson String         @default("[]") // string[]
+  compatibilityJson   String         @default("[]") // string[]
+  downloadsJson       String         @default("[]") // [{ label, url }]
+  videoUrl            String?
+  priceUsdCents       Int
+  compareAtUsdCents   Int?
+  costUsdCents        Int? // admin-only; excluded from storefront selects
+  stockQty            Int            @default(0)
+  lowStockThreshold   Int            @default(5)
+  status              String         @default("draft") // draft | active | archived | preorder
+  weightGrams         Int?
+  dimensionsMm        String? // "L x W x H"
+  warranty            String?
+  shippingNote        String?
+  isFeatured          Boolean        @default(false)
+  isNewArrival        Boolean        @default(false)
+  isBestSeller        Boolean        @default(false)
+  isDemo              Boolean        @default(false)
+  seoTitle            String?
+  seoDescription      String?
+  brandId             String
+  brand               Brand          @relation(fields: [brandId], references: [id])
+  categoryId          String
+  category            Category       @relation(fields: [categoryId], references: [id])
+  images              ProductImage[]
+  orderItems          OrderItem[]
+  quotationItems      QuotationItem[]
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+
+  @@index([categoryId, status])
+  @@index([status, isNewArrival])
+  @@index([status, isFeatured])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String // "placeholder:<iconKey>" renders a branded demo placeholder
+  alt       String
+  sortOrder Int     @default(0)
+}
+
+model Order {
+  id               String             @id @default(cuid())
+  orderNumber      String             @unique
+  email            String
+  phone            String
+  firstName        String
+  lastName         String
+  company          String?
+  poReference      String?
+  isInstitutional  Boolean            @default(false)
+  billingAddress   String?
+  deliveryAddress  String?
+  city             String?
+  country          String             @default("Zimbabwe")
+  deliveryMethod   String // collection | harare_delivery | nationwide_courier | international_quote
+  deliveryNotes    String?
+  currency         String             @default("USD") // settlement currency
+  subtotalCents    Int
+  deliveryCents    Int                @default(0)
+  discountCents    Int                @default(0)
+  totalCents       Int
+  status           String             @default("pending_payment")
+  paymentProvider  String? // paynow | bank_transfer | pay_on_collection (mock until credentials exist)
+  paymentRef       String?
+  customerNotes    String?
+  items            OrderItem[]
+  statusEvents     OrderStatusEvent[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@index([email])
+}
+
+model OrderItem {
+  id             String  @id @default(cuid())
+  orderId        String
+  order          Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId      String
+  product        Product @relation(fields: [productId], references: [id])
+  nameSnapshot   String
+  skuSnapshot    String
+  unitPriceCents Int
+  quantity       Int
+  lineTotalCents Int
+}
+
+model OrderStatusEvent {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  fromStatus String?
+  toStatus   String
+  note       String?
+  createdAt  DateTime @default(now())
+}
+
+model QuotationRequest {
+  id               String          @id @default(cuid())
+  reference        String          @unique
+  organisationName String
+  organisationType String // school | university | government | business | individual
+  contactName      String
+  contactEmail     String
+  contactPhone     String
+  poReference      String?
+  requirements     String?
+  attachmentUrl    String?
+  status           String          @default("new") // new | under_review | info_required | quoted | accepted | rejected | converted
+  internalNotes    String?
+  items            QuotationItem[]
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+}
+
+model QuotationItem {
+  id          String           @id @default(cuid())
+  quotationId String
+  quotation   QuotationRequest @relation(fields: [quotationId], references: [id], onDelete: Cascade)
+  productId   String?
+  product     Product?         @relation(fields: [productId], references: [id])
+  description String
+  quantity    Int
+}
+
+// Admin-controlled key/value settings: exchange rate, announcements, store hours, feature flags.
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String?
+  createdAt DateTime @default(now())
+}

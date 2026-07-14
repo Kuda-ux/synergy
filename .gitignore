@@ -30,8 +30,15 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files — commit .env.example, never commit real secrets
+.env
+.env.local
+.env.*.local
+
+# sqlite local dev db
+*.db
+*.db-shm
+*.db-wal
 
 # vercel
 .vercel
@@ -39,3 +46,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# project-level dev logs / audit artifacts
+*.log
+eslint-summary.txt
+eslint.json
+lint-errors.json
+lint-errors.txt
+lint.log
+test.log
+typecheck.log

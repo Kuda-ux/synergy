@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Synergy Dynamics E-Commerce Platform
+
+A modern, premium, production-ready e-commerce website for **Synergy Dynamics** — a Zimbabwean robotics, electronics, automation, and intelligent systems company.
+
+Built with **Next.js 16** (App Router), **TypeScript**, **Tailwind CSS**, **Prisma**, and **Zustand**.
+
+## Features
+
+- Responsive, mobile-first design with light and dark themes.
+- Full product catalogue with categories, search, filters, sorting, and pagination.
+- Product detail pages with add-to-cart and add-to-quote flows.
+- Persistent cart and wishlist (client-side storage + Zustand).
+- Checkout and quotation request workflows with server-side validation.
+- Track order page.
+- Supporting pages: About, Services, Institutions, Training, Gallery, Resources, Contact, FAQ, Support, Delivery, Returns, Privacy, Terms.
+- SEO metadata, sitemap, robots.txt, and structured data.
+- Paynow webhook stub for payment notifications.
+- Strong TypeScript, reusable components, and integer minor-unit money handling.
+
+## Prerequisites
+
+- Node.js 20+
+- npm (or pnpm / yarn)
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository and install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Copy the example environment file and configure as needed:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Generate the Prisma client and seed the database:
+
+   ```bash
+   npm run db:generate
+   npm run db:seed
+   ```
+
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Build & Quality Checks
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Lint
+npm run lint
+
+# Type check
+npm run typecheck
+
+# Tests
+npm run test
+
+# Production build
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/           # Next.js App Router routes
+  components/    # Reusable UI components
+  lib/           # Utilities, validation, data access, store logic
+  hooks/         # Custom React hooks
+  styles/        # Global styles and fonts
+prisma/
+  schema.prisma  # Database schema
+  seed.ts        # Demo data
+public/          # Static assets
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customisation
 
-## Learn More
+- Brand tokens and theme configuration live in `src/lib/theme.ts` and `src/app/globals.css`.
+- Update business information, contact details, and policy copy in `src/lib/site.ts`.
+- Add or edit demo products, categories, and brands in `prisma/seed.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project is configured as a static Next.js app and can be deployed to any host that supports Next.js (Vercel, Netlify, etc.). For production, set real environment variables for payment, email, and database connections.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copyright © Synergy Dynamics. All rights reserved.

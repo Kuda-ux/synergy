@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Synergy Dynamics design tokens.
+  Brand palette extracted from the official logo: plum/magenta icon (#A2437E family),
+  near-black wordmark, white field.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand scale */
+  --brand-50: #faf3f7;
+  --brand-100: #f5e3ee;
+  --brand-200: #ecc7dd;
+  --brand-300: #dc9cc1;
+  --brand-400: #c66d9f;
+  --brand-500: #a2437e;
+  --brand-600: #8d3169;
+  --brand-700: #762757;
+  --brand-800: #622348;
+  --brand-900: #53203e;
+  --brand-950: #310d22;
+
+  /* Semantic — light theme */
+  --background: #f4f5f7;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --foreground: #101014;
+  --muted-foreground: #55555f;
+  --subtle-foreground: #85858f;
+  --border: #e2e3e8;
+  --border-strong: #c9cad2;
+  --ring: var(--brand-500);
+  --primary: var(--brand-600);
+  --primary-hover: var(--brand-700);
+  --primary-foreground: #ffffff;
+  --accent-surface: var(--brand-50);
+  --accent-border: var(--brand-200);
+  --success: #157347;
+  --success-surface: #e7f5ee;
+  --warning: #92610a;
+  --warning-surface: #fdf3dd;
+  --danger: #b3261e;
+  --danger-surface: #fceceb;
+  --info: #1d5fad;
+  --info-surface: #e8f0fb;
+
+  /* Dark band sections that stay dark in both themes */
+  --ink: #0b0b0f;
+  --ink-surface: #15151b;
+  --ink-border: #26262e;
+  --ink-foreground: #f4f5f7;
+  --ink-muted: #a2a2ad;
+}
+
+.dark {
+  --background: #0b0b0f;
+  --surface: #14141a;
+  --surface-raised: #1a1a22;
+  --foreground: #f4f5f7;
+  --muted-foreground: #a6a6b1;
+  --subtle-foreground: #74747f;
+  --border: #24242d;
+  --border-strong: #3a3a45;
+  --primary: var(--brand-500);
+  --primary-hover: var(--brand-400);
+  --primary-foreground: #ffffff;
+  --accent-surface: #2a1420;
+  --accent-border: #4b2038;
+  --success: #4cc38a;
+  --success-surface: #10241a;
+  --warning: #e2b93b;
+  --warning-surface: #29210d;
+  --danger: #f2726b;
+  --danger-surface: #2c1210;
+  --info: #6aa9ee;
+  --info-surface: #101f31;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-muted: var(--muted-foreground);
+  --color-subtle: var(--subtle-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent-surface: var(--accent-surface);
+  --color-accent-border: var(--accent-border);
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-warning: var(--warning);
+  --color-warning-surface: var(--warning-surface);
+  --color-danger: var(--danger);
+  --color-danger-surface: var(--danger-surface);
+  --color-info: var(--info);
+  --color-info-surface: var(--info-surface);
+  --color-ink: var(--ink);
+  --color-ink-surface: var(--ink-surface);
+  --color-ink-border: var(--ink-border);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "Cascadia Mono", monospace;
+
+  --radius-card: 0.875rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--brand-500);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Subtle engineering-grid background used on hero / dark bands */
+.circuit-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, currentColor 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, currentColor 6%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+/* Restrained magenta glow for premium dark sections */
+.brand-glow {
+  background:
+    radial-gradient(52rem 26rem at 85% -10%, color-mix(in srgb, var(--brand-500) 22%, transparent), transparent 65%),
+    radial-gradient(40rem 22rem at 0% 110%, color-mix(in srgb, var(--brand-700) 16%, transparent), transparent 60%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
