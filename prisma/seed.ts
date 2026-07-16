@@ -1,6 +1,7 @@
 ﻿import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { productImageMap } from "./product-images";
 
 if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not set");
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
@@ -247,7 +248,7 @@ async function main() {
         isFeatured: prod.f ?? false, isNewArrival: false, isBestSeller: prod.best ?? false,
         isDemo: false,
         brandId, categoryId,
-        images: { create: [{ url: `placeholder:${prod.ic}`, alt: prod.n, sortOrder: 0 }] },
+        images: { create: [{ url: productImageMap[prod.s] ?? `placeholder:${prod.ic}`, alt: prod.n, sortOrder: 0 }] },
       },
     });
     console.log(`  + ${prod.n}`);
