@@ -1,6 +1,4 @@
 import { ImageResponse } from "next/og";
-import { readFileSync } from "fs";
-import { join } from "path";
 import { getProductBySlug } from "@/lib/catalog";
 
 export const runtime = "nodejs";
@@ -12,9 +10,18 @@ function formatPrice(cents: number) {
   return `US$${(cents / 100).toFixed(2)}`;
 }
 
-function toBase64(path: string) {
+function getBaseUrl() {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:3000";
+}
+
+async function fetchAsBase64(path: string): Promise<string | null> {
   try {
-    const buffer = readFileSync(join(process.cwd(), "public", path));
+    const url = `${getBaseUrl()}${path}`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const buffer = Buffer.from(await res.arrayBuffer());
     const ext = path.split(".").pop()?.toLowerCase() ?? "png";
     let mime = `image/${ext}`;
     if (ext === "jpg" || ext === "jpeg") mime = "image/jpeg";
@@ -36,10 +43,10 @@ export default async function Image({ params }: { params: Promise<{ category: st
   if (product) {
     const realImage = product.images.find((img) => !img.url.startsWith("placeholder:"));
     if (realImage) {
-      productImgSrc = toBase64(realImage.url);
+      productImgSrc = await fetchAsBase64(realImage.url);
     }
   }
-  const logoSrc = toBase64("/brand/logo.jpeg");
+  const logoSrc = await fetchAsBase64("/brand/logo.jpeg");
 
   const price = product ? formatPrice(product.priceUsdCents) : "";
   const name = product ? product.name : "Product";
