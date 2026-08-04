@@ -11,8 +11,8 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // pg must stay external to the server bundle (Neon / PostgreSQL driver).
-  serverExternalPackages: ["pg", "pg-native"],
+  // Neon serverless driver must stay external to the server bundle.
+  serverExternalPackages: ["@neondatabase/serverless"],
   // Allow the IDE/browser preview proxy origin in development.
   allowedDevOrigins: ["127.0.0.1"],
   async headers() {

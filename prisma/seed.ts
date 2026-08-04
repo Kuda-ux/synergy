@@ -1,10 +1,10 @@
 ﻿import "dotenv/config";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { productImageMap } from "./product-images";
 
 if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not set");
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaNeon({ connectionString: process.env.DATABASE_URL });
 const db = new PrismaClient({ adapter });
 
 interface P { s:string; k:string; n:string; p:number; q:number; c:string; b:string; ic:string; f?:boolean; best?:boolean }
