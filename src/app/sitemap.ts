@@ -40,9 +40,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   return [
-    ...staticPaths.map((path) => ({ url: `${siteUrl}${path}` })),
-    ...getGuides().map((g) => ({ url: `${siteUrl}/resources/${g.slug}` })),
-    ...categories.map((c) => ({ url: `${siteUrl}/shop/${c.slug}`, lastModified: c.updatedAt })),
-    ...products.map((p) => ({ url: `${siteUrl}${productPath(p)}`, lastModified: p.updatedAt })),
+    ...staticPaths.map((path) => ({
+      url: `${siteUrl}${path}`,
+      changeFrequency: path === "" || path === "/shop" ? "daily" as const : "weekly" as const,
+      priority: path === "" ? 1.0 : path === "/shop" ? 0.9 : 0.7,
+    })),
+    ...getGuides().map((g) => ({
+      url: `${siteUrl}/resources/${g.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+    ...categories.map((c) => ({
+      url: `${siteUrl}/shop/${c.slug}`,
+      lastModified: c.updatedAt,
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    })),
+    ...products.map((p) => ({
+      url: `${siteUrl}${productPath(p)}`,
+      lastModified: p.updatedAt,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    })),
   ];
 }

@@ -35,11 +35,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { product: slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) return { title: "Product not found" };
+
+  const title = product.seoTitle ?? `${product.name} (${product.sku})`;
+  const description = product.seoDescription ?? product.shortDescription;
+  const canonical = productPath(product);
+  const realImage = product.images.find((img) => !img.url.startsWith("placeholder:"));
+  const ogImages = realImage
+    ? [{ url: realImage.url, alt: product.name, width: 1024, height: 1024 }]
+    : [{ url: "/brand/logo.jpeg", alt: product.name }];
+
   return {
-    title: product.seoTitle ?? `${product.name} (${product.sku})`,
-    description: product.seoDescription ?? product.shortDescription,
-    alternates: { canonical: productPath(product) },
-    openGraph: { title: product.name, description: product.shortDescription },
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: product.name,
+      description,
+      url: canonical,
+      type: "website",
+      images: ogImages,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.name,
+      description,
+      images: ogImages.map((img) => img.url),
+    },
   };
 }
 

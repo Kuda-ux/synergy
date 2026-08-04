@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { getAnnouncements, getStoreHours, getZwgRate } from "@/lib/settings";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
-import { organisationJsonLd } from "@/lib/seo";
+import { organisationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const sora = Sora({ variable: "--font-sora", subsets: ["latin"] });
@@ -22,14 +22,60 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${SITE_NAME} — Robotics, Electronics & STEM Education Store`,
+    default: `${SITE_NAME} — Robotics, Electronics & STEM Education Store | Zimbabwe`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: `${SITE_TAGLINE}. Shop robotics kits, electronic components, IoT devices and embedded systems for learning, innovation and industry.`,
+  description: `${SITE_TAGLINE}. Shop Arduino, Raspberry Pi, ESP32, sensors, motors, robotics kits, IoT modules and electronic components. Store collection in Harare and nationwide delivery across Zimbabwe.`,
+  keywords: [
+    "Synergy Dynamics", "robotics Zimbabwe", "electronics store Zimbabwe", "Arduino Zimbabwe",
+    "Raspberry Pi Zimbabwe", "ESP32", "sensors", "IoT modules", "electronic components Harare",
+    "STEM education Zimbabwe", "robotics kits", "development boards", "3D printing Zimbabwe",
+    "embedded systems", "microcontrollers", "motor drivers", "breadboard", "jumper wires",
+  ],
+  authors: [{ name: SITE_NAME, url: siteUrl }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: { telephone: true, email: true, address: true },
+  alternates: { canonical: "/" },
   openGraph: {
     siteName: SITE_NAME,
     type: "website",
     locale: "en_ZW",
+    url: siteUrl,
+    title: `${SITE_NAME} — Robotics, Electronics & STEM Education Store`,
+    description: `${SITE_TAGLINE}. Shop Arduino, Raspberry Pi, ESP32, sensors, motors, robotics kits, IoT modules and electronic components in Zimbabwe.`,
+    images: [
+      {
+        url: "/brand/logo.jpeg",
+        width: 1024,
+        height: 1024,
+        alt: `${SITE_NAME} — Zimbabwe's Robotics and Electronics Marketplace`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — Robotics, Electronics & STEM Education Store`,
+    description: `${SITE_TAGLINE}. Shop Arduino, Raspberry Pi, ESP32, sensors, robotics kits and electronic components in Zimbabwe.`,
+    images: ["/brand/logo.jpeg"],
+  },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon.svg",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "googlecb9e0a28b7d8003e",
   },
 };
 
@@ -59,7 +105,7 @@ export default async function RootLayout({
         </Providers>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([organisationJsonLd(), websiteJsonLd()]) }}
         />
       </body>
     </html>
