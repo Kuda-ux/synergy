@@ -14,20 +14,21 @@ import { CONTACT } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="brand-glow circuit-grid relative overflow-hidden bg-ink text-ink-foreground">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-28">
+    <section className="relative overflow-hidden bg-background text-foreground dark:bg-ink dark:text-ink-foreground">
+      <div className="circuit-grid tech-gradient dark:tech-gradient-dark tech-sheen absolute inset-0 opacity-70 dark:opacity-60" />
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-28">
         <div>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-ink-border bg-ink-surface/80 px-3 py-1 font-mono text-xs uppercase tracking-widest text-brand-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-400" aria-hidden />
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 px-3 py-1 font-mono text-xs uppercase tracking-widest text-brand-700 dark:border-brand-800 dark:bg-brand-950/60 dark:text-brand-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse" aria-hidden />
             Robotics · Electronics · Intelligent Systems
           </p>
           <h1 className="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             Build the Future with Robotics and{" "}
-            <span className="text-brand-300">Intelligent Systems</span>.
+            <span className="text-brand-600 dark:text-brand-300">Intelligent Systems</span>.
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-ink-muted">
+          <p className="mt-5 max-w-xl text-lg text-muted dark:text-ink-muted">
             Discover robotics kits, electronic components, IoT devices and embedded
-            systems for students, engineers, institutions and innovators.
+            systems for students, engineers, institutions and innovators in Zimbabwe.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/shop/electronic-components" size="lg">
@@ -40,7 +41,7 @@ export function Hero() {
               href="/quote"
               size="lg"
               variant="outline"
-              className="border-ink-border text-ink-foreground hover:border-brand-500 hover:bg-ink-surface"
+              className="border-border dark:border-ink-border text-foreground dark:text-ink-foreground hover:border-brand-500 hover:bg-brand-50 dark:hover:bg-ink-surface"
             >
               Request a Custom Solution
             </ButtonLink>
@@ -48,8 +49,8 @@ export function Hero() {
         </div>
         <div className="hidden lg:flex justify-center" aria-label="Featured product: ACEBOTT QD001 ESP32 Smart Car">
           <div className="relative w-full max-w-sm">
-            <div className="absolute -inset-8 rounded-full bg-brand-500/15 blur-3xl" />
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-brand-700/30">
+            <div className="absolute -inset-8 rounded-full bg-brand-500/25 dark:bg-brand-500/15 blur-3xl" />
+            <div className="card-glow relative overflow-hidden rounded-2xl bg-surface dark:bg-ink-surface">
               <Image
                 src="/products/qd001-smart-car-01.jpg"
                 alt="ACEBOTT QD001 ESP32 Smart Car Robot Kit — available at Synergy Dynamics Zimbabwe"
@@ -58,7 +59,7 @@ export function Hero() {
                 className="w-full object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent dark:from-ink/80" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <p className="font-mono text-xs uppercase tracking-widest text-brand-300">Featured product</p>
                 <p className="mt-0.5 text-sm font-semibold text-white">ACEBOTT QD001 ESP32 Smart Car</p>
@@ -66,11 +67,11 @@ export function Hero() {
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={11} className="fill-brand-400 text-brand-400" aria-hidden />
                   ))}
-                  <span className="ml-1 font-mono text-xs text-ink-muted">Authorised distributor</span>
+                  <span className="ml-1 font-mono text-xs text-white/70 dark:text-ink-muted">Authorised distributor</span>
                 </div>
               </div>
             </div>
-            <div className="absolute -right-3 -top-3 rounded-full bg-brand-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
+            <div className="absolute -right-3 -top-3 rounded-full bg-brand-600 px-3 py-1 text-xs font-bold text-white shadow-lg dark:bg-brand-500">
               In Stock
             </div>
           </div>
@@ -108,11 +109,12 @@ export function TrustStrip() {
 
 export function FinalCta() {
   return (
-    <section className="brand-glow circuit-grid bg-ink text-ink-foreground">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-16 text-center">
-        <CircuitBoard size={36} aria-hidden className="text-brand-300" />
+    <section className="relative overflow-hidden bg-background text-foreground dark:bg-ink dark:text-ink-foreground">
+      <div className="circuit-grid tech-gradient dark:tech-gradient-dark tech-sheen absolute inset-0 opacity-70 dark:opacity-60" />
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-16 text-center">
+        <CircuitBoard size={36} aria-hidden className="text-brand-600 dark:text-brand-300" />
         <h2 className="text-3xl font-semibold sm:text-4xl">Have an idea? Let&apos;s engineer it.</h2>
-        <p className="max-w-xl text-ink-muted">
+        <p className="max-w-xl text-muted dark:text-ink-muted">
           From a single prototype to a full institutional rollout — talk to our
           engineering team about what you want to build.
         </p>
@@ -124,7 +126,7 @@ export function FinalCta() {
             href={CONTACT.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-medium text-ink transition-colors hover:bg-white/90"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-brand-600 px-6 text-base font-medium text-white transition-colors hover:bg-brand-700 dark:bg-white dark:text-ink dark:hover:bg-white/90"
           >
             <MessageCircle size={18} aria-hidden />
             Chat on WhatsApp

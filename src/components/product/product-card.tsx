@@ -28,7 +28,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
   const info = cartInfoFor(product);
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-card border border-border bg-surface transition-shadow hover:shadow-lg hover:shadow-brand-950/5">
+    <article className="group relative flex flex-col overflow-hidden rounded-card border border-border bg-surface transition-all hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-200 dark:hover:border-brand-900 dark:hover:shadow-brand-950/20">
       <Link href={href} className="relative block" tabIndex={-1} aria-hidden>
         <ProductImage
           url={product.images[0]?.url ?? null}

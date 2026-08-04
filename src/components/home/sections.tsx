@@ -97,17 +97,18 @@ export function NewArrivalsSection({ products }: { products: ProductCardData[] }
 export function RoboticsShowcase({ products }: { products: ProductCardData[] }) {
   if (products.length === 0) return null;
   return (
-    <section className="brand-glow bg-ink text-ink-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-16">
+    <section className="relative overflow-hidden bg-background text-foreground dark:bg-ink dark:text-ink-foreground">
+      <div className="circuit-grid tech-gradient dark:tech-gradient-dark tech-sheen absolute inset-0 opacity-70 dark:opacity-60" />
+      <div className="relative mx-auto max-w-7xl px-4 py-16">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <p className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-brand-300">
+            <p className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-brand-600 dark:text-brand-300">
               Featured robotics
             </p>
             <h2 className="text-2xl font-semibold sm:text-3xl">
               Robotics kits at the centre of learning
             </h2>
-            <p className="mt-3 text-ink-muted">
+            <p className="mt-3 text-muted dark:text-ink-muted">
               Robot vehicles, robotic arms and educational platforms for classrooms,
               clubs and competitions.
             </p>
@@ -121,18 +122,18 @@ export function RoboticsShowcase({ products }: { products: ProductCardData[] }) 
             <Link
               key={product.id}
               href={productPath(product)}
-              className="group overflow-hidden rounded-card border border-ink-border bg-ink-surface transition-colors hover:border-brand-700"
+              className="group overflow-hidden rounded-card border border-border bg-surface transition-colors hover:border-brand-500 dark:border-ink-border dark:bg-ink-surface dark:hover:border-brand-700"
             >
               <ProductImage
                 url={product.images[0]?.url ?? null}
                 alt={product.images[0]?.alt ?? product.name}
-                className="aspect-[4/3] w-full !bg-ink-surface text-brand-400"
+                className="aspect-[4/3] w-full bg-surface text-primary dark:!bg-ink-surface dark:text-brand-400"
                 iconSize={72}
               />
               <div className="p-5">
-                <h3 className="font-semibold group-hover:text-brand-300">{product.name}</h3>
-                <p className="mt-1 line-clamp-2 text-sm text-ink-muted">{product.shortDescription}</p>
-                <Price usdCents={product.priceUsdCents} className="mt-3 text-brand-300" />
+                <h3 className="font-semibold group-hover:text-primary dark:group-hover:text-brand-300">{product.name}</h3>
+                <p className="mt-1 line-clamp-2 text-sm text-muted dark:text-ink-muted">{product.shortDescription}</p>
+                <Price usdCents={product.priceUsdCents} className="mt-3 text-primary dark:text-brand-300" />
               </div>
             </Link>
           ))}

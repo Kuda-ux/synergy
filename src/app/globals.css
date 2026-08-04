@@ -153,11 +153,52 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 42px 42px;
 }
 
-/* Restrained magenta glow for premium dark sections */
+/* Vibrant tech background for light & dark modes */
 .brand-glow {
   background:
-    radial-gradient(52rem 26rem at 85% -10%, color-mix(in srgb, var(--brand-500) 22%, transparent), transparent 65%),
-    radial-gradient(40rem 22rem at 0% 110%, color-mix(in srgb, var(--brand-700) 16%, transparent), transparent 60%);
+    radial-gradient(60rem 32rem at 85% -10%, color-mix(in srgb, var(--brand-500) 24%, transparent), transparent 65%),
+    radial-gradient(48rem 28rem at 0% 110%, color-mix(in srgb, var(--brand-700) 20%, transparent), transparent 60%);
+}
+
+/* Animated tech gradient background */
+.tech-gradient {
+  background:
+    radial-gradient(60rem 40rem at 120% 0%, color-mix(in srgb, var(--brand-500) 18%, transparent), transparent 50%),
+    radial-gradient(50rem 30rem at -10% 100%, color-mix(in srgb, var(--brand-400) 16%, transparent), transparent 55%),
+    linear-gradient(135deg, var(--background) 0%, var(--surface) 50%, color-mix(in srgb, var(--brand-50) 40%, var(--background)) 100%);
+}
+
+/* Dark variant of the tech gradient */
+.tech-gradient-dark {
+  background:
+    radial-gradient(60rem 40rem at 120% 0%, color-mix(in srgb, var(--brand-500) 28%, transparent), transparent 50%),
+    radial-gradient(50rem 30rem at -10% 100%, color-mix(in srgb, var(--brand-700) 22%, transparent), transparent 55%),
+    linear-gradient(135deg, var(--ink) 0%, color-mix(in srgb, var(--brand-950) 80%, var(--ink)) 50%, var(--ink) 100%);
+}
+
+/* Subtle scanline / electronic sheen */
+.tech-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    color-mix(in srgb, var(--brand-500) 3%, transparent) 2px,
+    color-mix(in srgb, var(--brand-500) 3%, transparent) 3px
+  );
+  opacity: 0.4;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+/* Floating glow for featured cards */
+.card-glow {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--brand-500) 12%, transparent),
+    0 24px 60px -20px color-mix(in srgb, var(--brand-500) 25%, transparent),
+    0 8px 24px -12px rgba(0, 0, 0, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {
