@@ -60,7 +60,10 @@ export const metadata: Metadata = {
     images: ["/brand/logo.jpeg"],
   },
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+    ],
     apple: "/apple-icon.svg",
   },
   robots: {
