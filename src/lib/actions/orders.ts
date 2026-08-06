@@ -122,14 +122,21 @@ export async function createOrder(
 
   const provider = getPaymentProvider(data.paymentMethod);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const initiation = await provider.initiate({
-    orderNumber,
-    email: data.email,
-    totalCents,
-    currency: "USD",
-    returnUrl: `${siteUrl}/checkout/confirmation/${orderNumber}`,
-    webhookUrl: `${siteUrl}/api/paynow/webhook`,
-  });
+  let initiation: { providerRef: string; instructions?: string; redirectUrl?: string };
+  try {
+    initiation = await provider.initiate({
+      orderNumber,
+      email: data.email,
+      totalCents,
+      currency: "USD",
+      returnUrl: `${siteUrl}/checkout/confirmation/${orderNumber}`,
+      webhookUrl: `${siteUrl}/api/paynow/webhook`,
+    });
+  } catch (e) {
+    console.error("Payment initiation failed:", e);
+    const message = e instanceof Error ? e.message : "Payment provider did not respond";
+    return { ok: false, error: `Payment could not be started: ${message}. Please try again or contact us on WhatsApp.` };
+  }
 
   await db.order.update({ where: { id: order.id }, data: { paymentRef: initiation.providerRef } });
 

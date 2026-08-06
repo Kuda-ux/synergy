@@ -29,13 +29,21 @@ function hashFromValues(values: string[], key: string): string {
   return createHash("sha512").update(values.join("") + key, "utf8").digest("hex").toUpperCase();
 }
 
-/** Build a hash from ordered params, excluding any 'hash' key. */
+/** Build a hash from ordered params, excluding any 'hash' key.
+ *  URLSearchParams already gives decoded values, so we use them directly.
+ */
 function hashFromParams(params: URLSearchParams, key: string): string {
   const values: string[] = [];
   params.forEach((value, pkey) => {
-    if (pkey.toLowerCase() !== "hash") values.push(decodeURIComponent(value));
+    if (pkey.toLowerCase() !== "hash") values.push(value);
   });
   return hashFromValues(values, key);
+}
+
+function safeString(value: unknown): string {
+  if (value === undefined || value === null) return "";
+  if (typeof value === "string") return value;
+  return String(value);
 }
 
 /** Format cents to 2-decimal USD string for Paynow. */
@@ -65,7 +73,6 @@ export const paynowProvider: PaymentProvider = {
       `Order ${orderNumber}`,
       returnUrl,
       webhookUrl,
-      email,
       "Message",
     ];
     const hash = hashFromValues(fields, integrationKey);
@@ -77,7 +84,6 @@ export const paynowProvider: PaymentProvider = {
       additionalinfo: `Order ${orderNumber}`,
       returnurl: returnUrl,
       resulturl: webhookUrl,
-      authemail: email,
       status: "Message",
       hash,
     });
@@ -93,9 +99,10 @@ export const paynowProvider: PaymentProvider = {
     }
 
     const responseText = await res.text();
+    console.error("Paynow initiate response:", responseText);
     const responseParams = new URLSearchParams(responseText);
-    const status = (responseParams.get("status") ?? "").toLowerCase();
-    const receivedHash = responseParams.get("hash") ?? "";
+    const status = safeString(responseParams.get("status")).toLowerCase();
+    const receivedHash = safeString(responseParams.get("hash"));
     const expectedHash = hashFromParams(responseParams, integrationKey);
 
     if (receivedHash.toUpperCase() !== expectedHash) {
@@ -103,7 +110,7 @@ export const paynowProvider: PaymentProvider = {
     }
 
     if (status !== "ok") {
-      throw new Error(`Paynow initiate failed: ${responseParams.get("error") ?? status}`);
+      throw new Error(`Paynow initiate failed: ${safeString(responseParams.get("error")) || status || "unknown error"}`);
     }
 
     const browserUrl = responseParams.get("browserurl");
