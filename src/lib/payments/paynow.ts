@@ -25,19 +25,42 @@ function isConfigured() {
   return Boolean(integrationId) && Boolean(integrationKey);
 }
 
-function hashFromValues(values: string[], key: string): string {
-  return createHash("sha512").update(values.join("") + key, "utf8").digest("hex").toUpperCase();
+function hashString(input: string): string {
+  return createHash("sha512").update(input, "utf8").digest("hex").toUpperCase();
 }
 
-/** Build a hash from ordered params, excluding any 'hash' key.
- *  URLSearchParams already gives decoded values, so we use them directly.
+function hashFromValues(values: string[], key: string): string {
+  return hashString(values.join("") + key);
+}
+
+/** Validate a Paynow inbound message hash per their docs:
+ *  1. Split the message by '&' into key=value pairs.
+ *  2. Split each pair on the first '=' into a key and a value.
+ *  3. URL-decode each value and join all values EXCEPT the 'hash' value.
+ *  4. Append the Integration Key.
+ *  5. SHA-512 the result, uppercase hex.
  */
-function hashFromParams(params: URLSearchParams, key: string): string {
+function verifyPaynowHash(rawMessage: string, key: string): { received: string; expected: string } {
+  const pairs = rawMessage.split("&");
   const values: string[] = [];
-  params.forEach((value, pkey) => {
-    if (pkey.toLowerCase() !== "hash") values.push(value);
-  });
-  return hashFromValues(values, key);
+  let received = "";
+  for (const pair of pairs) {
+    const idx = pair.indexOf("=");
+    const pkey = idx === -1 ? pair : pair.slice(0, idx);
+    const pvalue = idx === -1 ? "" : pair.slice(idx + 1);
+    if (pkey.toLowerCase() === "hash") {
+      received = pvalue;
+      continue;
+    }
+    try {
+      values.push(decodeURIComponent(pvalue));
+    } catch {
+      // If decoding fails, use the raw value.
+      values.push(pvalue);
+    }
+  }
+  const expected = hashString(values.join("") + key);
+  return { received: received.toUpperCase(), expected };
 }
 
 function safeString(value: unknown): string {
@@ -99,15 +122,16 @@ export const paynowProvider: PaymentProvider = {
     }
 
     const responseText = await res.text();
+    const { received, expected } = verifyPaynowHash(responseText, integrationKey);
     console.error("Paynow initiate response:", responseText);
-    const responseParams = new URLSearchParams(responseText);
-    const status = safeString(responseParams.get("status")).toLowerCase();
-    const receivedHash = safeString(responseParams.get("hash"));
-    const expectedHash = hashFromParams(responseParams, integrationKey);
+    console.error("Paynow hash check — received:", received, "expected:", expected);
 
-    if (receivedHash.toUpperCase() !== expectedHash) {
+    if (received !== expected) {
       throw new Error("Paynow initiate response hash mismatch");
     }
+
+    const responseParams = new URLSearchParams(responseText);
+    const status = safeString(responseParams.get("status")).toLowerCase();
 
     if (status !== "ok") {
       throw new Error(`Paynow initiate failed: ${safeString(responseParams.get("error")) || status || "unknown error"}`);
@@ -128,14 +152,15 @@ export const paynowProvider: PaymentProvider = {
     if (!integrationKey) {
       return { ok: false, providerRef: "", outcome: "pending" };
     }
-    const params = new URLSearchParams(rawBody);
-    const receivedHash = params.get("hash") ?? "";
-    const expected = hashFromParams(params, integrationKey);
+    const { received, expected } = verifyPaynowHash(rawBody, integrationKey);
+    console.error("Paynow webhook hash check — received:", received, "expected:", expected);
 
-    if (receivedHash.toUpperCase() !== expected) {
+    if (received !== expected) {
+      const params = new URLSearchParams(rawBody);
       return { ok: false, providerRef: params.get("reference") ?? "", outcome: "pending" };
     }
 
+    const params = new URLSearchParams(rawBody);
     const status = (params.get("status") ?? "").toLowerCase();
     return {
       ok: true,
