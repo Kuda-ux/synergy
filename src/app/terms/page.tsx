@@ -4,7 +4,7 @@ import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions",
-  description: "Terms and conditions for purchasing from Synergy Dynamics.",
+  description: "Terms and conditions for purchasing from Synergy Robotics.",
   alternates: { canonical: "/terms" },
 };
 
@@ -15,7 +15,7 @@ export default function TermsPage() {
       <h1 className="text-2xl font-semibold sm:text-3xl">Terms &amp; conditions</h1>
 
       <p className="mt-4 rounded-card border border-warning/40 bg-warning-surface px-4 py-3 text-sm text-warning">
-        Draft terms — this page requires review and approval by Synergy Dynamics
+        Draft terms — this page requires review and approval by Synergy Robotics
         management (and, where appropriate, legal review) before it becomes binding.
       </p>
 

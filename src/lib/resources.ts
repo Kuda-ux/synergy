@@ -1,6 +1,6 @@
 /**
  * Educational guides. Content here is general engineering education written
- * for this site — it makes no claims about Synergy Dynamics stock or pricing.
+ * for this site — it makes no claims about Synergy Robotics stock or pricing.
  * Stored in code for the first slice; moves to the database with the admin CMS phase.
  */
 export interface Guide {

@@ -7,7 +7,7 @@ import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Support",
-  description: "Technical product support, order help, returns and resources from Synergy Dynamics.",
+  description: "Technical product support, order help, returns and resources from Synergy Robotics.",
   alternates: { canonical: "/support" },
 };
 

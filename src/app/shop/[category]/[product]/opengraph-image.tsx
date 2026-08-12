@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { getProductBySlug } from "@/lib/catalog";
 
 export const runtime = "nodejs";
-export const alt = "Synergy Dynamics product";
+export const alt = "Synergy Robotics product";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -36,7 +36,7 @@ export default async function Image({ params }: { params: Promise<{ category: st
   const { product: slug } = await params;
   const product = await getProductBySlug(slug);
 
-  const brandName = "Synergy Dynamics";
+  const brandName = "Synergy Robotics";
   const tagline = "Zimbabwe's Robotics, Electronics & Intelligent Systems Marketplace";
 
   let productImgSrc: string | null = null;
@@ -118,7 +118,7 @@ export default async function Image({ params }: { params: Promise<{ category: st
             {logoSrc ? (
               <img
                 src={logoSrc}
-                alt="Synergy Dynamics logo"
+                alt="Synergy Robotics logo"
                 width={48}
                 height={48}
                 style={{ borderRadius: 12, objectFit: "cover" }}

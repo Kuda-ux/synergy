@@ -4,7 +4,7 @@ import { TrackOrderForm } from "@/components/forms/track-order-form";
 
 export const metadata: Metadata = {
   title: "Track Order",
-  description: "Check the live status of your Synergy Dynamics order.",
+  description: "Check the live status of your Synergy Robotics order.",
   alternates: { canonical: "/track-order" },
 };
 

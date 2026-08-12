@@ -17,20 +17,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = await getCategoryBySlug(slug);
   if (!category) return { title: "Category not found" };
   const description =
-    category.description ?? `Shop ${category.name} at Synergy Dynamics — Zimbabwe's robotics and electronics marketplace.`;
+    category.description ?? `Shop ${category.name} at Synergy Robotics — Zimbabwe's robotics and electronics marketplace.`;
   return {
     title: `${category.name} — Buy Online in Zimbabwe`,
     description,
     alternates: { canonical: `/shop/${category.slug}` },
     openGraph: {
-      title: `${category.name} | Synergy Dynamics`,
+      title: `${category.name} | Synergy Robotics`,
       description,
       url: `/shop/${category.slug}`,
       images: [{ url: "/brand/logo.jpeg", alt: category.name }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${category.name} | Synergy Dynamics`,
+      title: `${category.name} | Synergy Robotics`,
       description,
     },
   };

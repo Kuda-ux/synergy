@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return { title: "Product not found" };
 
   const price = `US$${(product.priceUsdCents / 100).toFixed(2)}`;
-  const title = product.seoTitle ?? `${product.name} — ${price} | Synergy Dynamics`;
+  const title = product.seoTitle ?? `${product.name} — ${price} | Synergy Robotics`;
   const description =
     product.seoDescription ??
-    `${product.shortDescription} Now selling at ${price}. Buy online at Synergy Dynamics — Zimbabwe's robotics and electronics marketplace.`;
+    `${product.shortDescription} Now selling at ${price}. Buy online at Synergy Robotics — Zimbabwe's robotics and electronics marketplace.`;
   const canonical = productPath(product);
 
   return {
@@ -106,7 +106,7 @@ export default async function ProductPage({ params }: Props) {
       {product.isDemo && (
         <p className="mb-6 rounded-card border border-warning/40 bg-warning-surface px-4 py-2.5 text-sm text-warning">
           Demo product — pricing, stock and specifications shown here are illustrative
-          placeholders pending the live Synergy Dynamics catalogue.
+          placeholders pending the live Synergy Robotics catalogue.
         </p>
       )}
 

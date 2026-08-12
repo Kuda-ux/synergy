@@ -1,4 +1,4 @@
-ï»¿import "dotenv/config";
+import "dotenv/config";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { productImageMap } from "./product-images";
@@ -20,7 +20,7 @@ const categories = [
   { slug:"stem-education",        name:"STEM Education",        icon:"graduation-cap", desc:"Starter kits and educational packages for learning electronics." },
 ];
 
-const brands = ["Arduino","Espressif","Raspberry Pi","Kuongshun","Anycubic","Synergy Dynamics","Generic"];
+const brands = ["Arduino","Espressif","Raspberry Pi","Kuongshun","Anycubic","Synergy Robotics","Generic"];
 
 const products: P[] = [
   {s:"arduino-uno-r3-with-cable",k:"ARD-UNO-R3",n:"Arduino Uno R3 Board with Cable",p:700,q:50,c:"development-boards",b:"Arduino",ic:"cpu",best:true},
@@ -51,7 +51,7 @@ const products: P[] = [
   {s:"12v-brushless-water-pump",k:"WP-12V",n:"12V Brushless Water Pump",p:1000,q:10,c:"motors-motion",b:"Generic",ic:"cog"},
   {s:"arduino-mega-2560",k:"ARD-MEGA",n:"Arduino Mega 2560",p:2500,q:15,c:"development-boards",b:"Arduino",ic:"cpu",f:true},
   {s:"drone-frame",k:"DRN-FRAME",n:"Drone Frame",p:3000,q:8,c:"robotics-kits",b:"Generic",ic:"bot"},
-  {s:"electronics-starter-kit",k:"ESK-001",n:"Electronics Starter Kit",p:1000,q:25,c:"stem-education",b:"Synergy Dynamics",ic:"graduation-cap"},
+  {s:"electronics-starter-kit",k:"ESK-001",n:"Electronics Starter Kit",p:1000,q:25,c:"stem-education",b:"Synergy Robotics",ic:"graduation-cap"},
   {s:"30a-esc-controller",k:"ESC-30A",n:"30A ESC Speed Controller",p:1000,q:15,c:"motors-motion",b:"Generic",ic:"cog"},
   {s:"esp32-devkit",k:"ESP-32",n:"ESP32",p:700,q:60,c:"development-boards",b:"Espressif",ic:"cpu",best:true},
   {s:"esp8266-nodemcu",k:"ESP-8266",n:"ESP8266",p:600,q:60,c:"development-boards",b:"Espressif",ic:"cpu"},
@@ -240,7 +240,7 @@ async function main() {
     await db.product.create({
       data: {
         slug: prod.s, sku: prod.k, name: prod.n,
-        shortDescription: `${prod.n} â€” available at Synergy Dynamics Zimbabwe.`,
+        shortDescription: `${prod.n} — available at Synergy Robotics Zimbabwe.`,
         description: prod.n,
         tags: [prod.c, prod.b.toLowerCase(), prod.n.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()].join(","),
         specsJson: "[]", packageContentsJson: "[]", compatibilityJson: "[]",
@@ -258,12 +258,12 @@ async function main() {
     data: [
       { key: "zwg_per_usd",   value: "2650" },
       { key: "zwg_enabled",   value: "true" },
-      { key: "announcements", value: JSON.stringify(["Nationwide delivery across Zimbabwe","Collection at Park City Village Mall, Harare","Institutional and bulk orders welcome â€” request a quotation","WhatsApp support available"]) },
-      { key: "store_hours",   value: "Monâ€“Fri 8:00â€“17:00, Sat 9:00â€“13:00" },
+      { key: "announcements", value: JSON.stringify(["Nationwide delivery across Zimbabwe","Collection at Park City Village Mall, Harare","Institutional and bulk orders welcome — request a quotation","WhatsApp support available"]) },
+      { key: "store_hours",   value: "Mon–Fri 8:00–17:00, Sat 9:00–13:00" },
     ],
   });
 
-  console.log(`\nDone â€” ${categories.length} categories, ${brands.length} brands, ${products.length} products.`);
+  console.log(`\nDone — ${categories.length} categories, ${brands.length} brands, ${products.length} products.`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); }).finally(() => db.$disconnect());

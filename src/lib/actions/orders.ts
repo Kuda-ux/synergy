@@ -143,7 +143,7 @@ export async function createOrder(
   await getNotificationProvider().send({
     to: data.email,
     template: "order_received",
-    subject: `Order ${orderNumber} received — Synergy Dynamics`,
+    subject: `Order ${orderNumber} received — Synergy Robotics`,
     data: { orderNumber, total: (totalCents / 100).toFixed(2) },
   });
 

@@ -107,7 +107,7 @@ export function SiteFooter({ storeHours }: { storeHours: string }) {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-subtle sm:flex-row">
-          <p>© {new Date().getFullYear()} Synergy Dynamics. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Synergy Robotics. All rights reserved.</p>
           <p className="flex gap-4">
             <Link href="/privacy" className="hover:text-foreground">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-foreground">Terms &amp; Conditions</Link>

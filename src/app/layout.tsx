@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   description: `${SITE_TAGLINE}. Shop Arduino, Raspberry Pi, ESP32, sensors, motors, robotics kits, IoT modules and electronic components. Store collection in Harare and nationwide delivery across Zimbabwe.`,
   keywords: [
-    "Synergy Dynamics", "robotics Zimbabwe", "electronics store Zimbabwe", "Arduino Zimbabwe",
+    "Synergy Robotics", "robotics Zimbabwe", "electronics store Zimbabwe", "Arduino Zimbabwe",
     "Raspberry Pi Zimbabwe", "ESP32", "sensors", "IoT modules", "electronic components Harare",
     "STEM education Zimbabwe", "robotics kits", "development boards", "3D printing Zimbabwe",
     "embedded systems", "microcontrollers", "motor drivers", "breadboard", "jumper wires",

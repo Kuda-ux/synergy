@@ -1,4 +1,4 @@
-// Synergy Dynamics commerce schema.
+// Synergy Robotics commerce schema.
 // Local development uses SQLite; production targets PostgreSQL (e.g. Supabase).
 // The schema deliberately avoids enums and native JSON columns so the same
 // models run on both providers — statuses are validated by Zod in

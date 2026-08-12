@@ -154,7 +154,7 @@ export function QuoteForm() {
           label="Custom requirements"
           name="requirements"
           error={fieldErrors.requirements}
-          hint="Tell us about quantities, timelines, training needs or custom engineering. You can also email supporting documents to info@synergydynamics.co.zw quoting your reference number."
+          hint="Tell us about quantities, timelines, training needs or custom engineering. You can also email supporting documents to info@synergyrobotics.co.zw quoting your reference number."
         />
       </fieldset>
 

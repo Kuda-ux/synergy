@@ -1,6 +1,6 @@
-# Synergy Dynamics E-Commerce Platform
+# Synergy Robotics E-Commerce Platform
 
-A modern, premium, production-ready e-commerce website for **Synergy Dynamics** — a Zimbabwean robotics, electronics, automation, and intelligent systems company.
+A modern, premium, production-ready e-commerce website for **Synergy Robotics** — a Zimbabwean robotics, electronics, automation, and intelligent systems company.
 
 Built with **Next.js 16** (App Router), **TypeScript**, **Tailwind CSS**, **Prisma**, and **Zustand**.
 
@@ -94,4 +94,4 @@ The project is configured as a static Next.js app and can be deployed to any hos
 
 ## License
 
-Copyright © Synergy Dynamics. All rights reserved.
+Copyright © Synergy Robotics. All rights reserved.

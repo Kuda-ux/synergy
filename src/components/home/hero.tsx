@@ -53,7 +53,7 @@ export function Hero() {
             <div className="card-glow relative overflow-hidden rounded-2xl bg-surface dark:bg-ink-surface">
               <Image
                 src="/products/qd001-smart-car-01.jpg"
-                alt="ACEBOTT QD001 ESP32 Smart Car Robot Kit — available at Synergy Dynamics Zimbabwe"
+                alt="ACEBOTT QD001 ESP32 Smart Car Robot Kit — available at Synergy Robotics Zimbabwe"
                 width={480}
                 height={480}
                 className="w-full object-cover"

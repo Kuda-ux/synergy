@@ -56,7 +56,7 @@ export async function createQuotationRequest(
   await getNotificationProvider().send({
     to: data.contactEmail,
     template: "quotation_received",
-    subject: `Quotation request ${reference} received — Synergy Dynamics`,
+    subject: `Quotation request ${reference} received — Synergy Robotics`,
     data: { reference },
   });
 

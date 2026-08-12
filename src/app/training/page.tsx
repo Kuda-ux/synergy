@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Training and Workshops",
   description:
-    "Project-based robotics, electronics and IoT training for learners, educators and professional teams — delivered by Synergy Dynamics in Zimbabwe.",
+    "Project-based robotics, electronics and IoT training for learners, educators and professional teams — delivered by Synergy Robotics in Zimbabwe.",
   alternates: { canonical: "/training" },
 };
 
@@ -24,7 +24,7 @@ export default function TrainingPage() {
       <SectionHeading
         eyebrow="Training & workshops"
         title="Learning by building"
-        description="All Synergy Dynamics training is hands-on and project-based: participants leave having built, coded and debugged something real. Programmes are scheduled on request and priced by quotation."
+        description="All Synergy Robotics training is hands-on and project-based: participants leave having built, coded and debugged something real. Programmes are scheduled on request and priced by quotation."
       />
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">

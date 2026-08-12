@@ -6,7 +6,7 @@ import { parseCatalogParams, type SearchParams } from "@/components/filters/cata
 
 export const metadata: Metadata = {
   title: "New Arrivals",
-  description: "The latest robotics kits, boards, sensors and tools to land at Synergy Dynamics.",
+  description: "The latest robotics kits, boards, sensors and tools to land at Synergy Robotics.",
   alternates: { canonical: "/new-arrivals" },
 };
 

@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Synergy Dynamics design tokens.
+  Synergy Robotics design tokens.
   Brand palette extracted from the official logo: plum/magenta icon (#A2437E family),
   near-black wordmark, white field.
 */

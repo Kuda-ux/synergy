@@ -9,7 +9,7 @@ import { localBusinessJsonLd } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Visit Synergy Dynamics at Park City Village Mall, Harare, or reach us by phone, WhatsApp or email.",
+    "Visit Synergy Robotics at Park City Village Mall, Harare, or reach us by phone, WhatsApp or email.",
   alternates: { canonical: "/contact" },
 };
 

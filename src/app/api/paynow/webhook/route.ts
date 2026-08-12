@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     await getNotificationProvider().send({
       to: order.email,
       template: "payment_received",
-      subject: `Payment received for ${order.orderNumber} — Synergy Dynamics`,
+      subject: `Payment received for ${order.orderNumber} — Synergy Robotics`,
       data: { orderNumber: order.orderNumber },
     });
   }

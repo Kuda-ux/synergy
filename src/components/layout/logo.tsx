@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /**
- * Vector recreation of the Synergy Dynamics mark (magenta rounded tile with
+ * Vector recreation of the Synergy Robotics mark (magenta rounded tile with
  * circuit nodes + bold technical wordmark) so it renders crisply in both
  * themes. The original raster logo is kept at /public/brand/logo.jpeg;
  * replace this with the official vector asset when supplied.
@@ -14,7 +14,7 @@ export function LogoMark({ size = 36, className }: { size?: number; className?: 
       height={size}
       viewBox="0 0 48 48"
       role="img"
-      aria-label="Synergy Dynamics logo"
+      aria-label="Synergy Robotics logo"
       className={className}
     >
       <rect width="48" height="48" rx="10" fill="var(--brand-500)" />
@@ -34,7 +34,7 @@ export function LogoMark({ size = 36, className }: { size?: number; className?: 
 
 export function Logo({ className, inverted = false }: { className?: string; inverted?: boolean }) {
   return (
-    <Link href="/" className={cn("flex items-center gap-2.5", className)} aria-label="Synergy Dynamics — home">
+    <Link href="/" className={cn("flex items-center gap-2.5", className)} aria-label="Synergy Robotics — home">
       <LogoMark size={36} className="shrink-0" />
       <span
         className={cn(
@@ -43,7 +43,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
         )}
       >
         <span className="block text-[15px] font-extrabold uppercase tracking-[0.08em]">Synergy</span>
-        <span className="block text-[11px] font-semibold uppercase tracking-[0.42em]">Dynamics</span>
+        <span className="block text-[11px] font-semibold uppercase tracking-[0.42em]">Robotics</span>
       </span>
     </Link>
   );

@@ -27,7 +27,7 @@ export default function InstitutionsPage() {
       <SectionHeading
         eyebrow="For institutions"
         title="Equipping schools, universities and innovation labs"
-        description="From a single classroom kit to a full national STEM programme — Synergy Dynamics supplies, installs, trains and supports. Every institutional engagement starts with a conversation and a formal quotation."
+        description="From a single classroom kit to a full national STEM programme — Synergy Robotics supplies, installs, trains and supports. Every institutional engagement starts with a conversation and a formal quotation."
       />
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

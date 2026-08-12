@@ -59,7 +59,7 @@ const products: P[] = [
   {s:"12v-brushless-water-pump",k:"WP-12V",n:"12V Brushless Water Pump",p:1000,q:10,c:"motors-motion",b:"Generic",ic:"cog"},
   {s:"arduino-mega-2560",k:"ARD-MEGA",n:"Arduino Mega 2560",p:2500,q:15,c:"development-boards",b:"Arduino",ic:"cpu",f:true},
   {s:"drone-frame",k:"DRN-FRAME",n:"Drone Frame",p:3000,q:8,c:"robotics-kits",b:"Generic",ic:"bot"},
-  {s:"electronics-starter-kit",k:"ESK-001",n:"Electronics Starter Kit",p:1000,q:25,c:"stem-education",b:"Synergy Dynamics",ic:"graduation-cap"},
+  {s:"electronics-starter-kit",k:"ESK-001",n:"Electronics Starter Kit",p:1000,q:25,c:"stem-education",b:"Synergy Robotics",ic:"graduation-cap"},
   {s:"30a-esc-controller",k:"ESC-30A",n:"30A ESC Speed Controller",p:1000,q:15,c:"motors-motion",b:"Generic",ic:"cog"},
   {s:"esp32-devkit",k:"ESP-32",n:"ESP32",p:700,q:60,c:"development-boards",b:"Espressif",ic:"cpu",best:true},
   {s:"esp8266-nodemcu",k:"ESP-8266",n:"ESP8266",p:600,q:60,c:"development-boards",b:"Espressif",ic:"cpu"},
@@ -238,7 +238,7 @@ const RED_TEXT      = "DC2626";
 // ─── 1. GOOGLE MERCHANT FEED ──────────────────────────────────────────────────
 async function buildGoogleMerchantFeed() {
   const wb = new ExcelJS.Workbook();
-  wb.creator = "Synergy Dynamics";
+  wb.creator = "Synergy Robotics";
   wb.created = new Date();
 
   const ws = wb.addWorksheet("Products", {
@@ -278,12 +278,12 @@ async function buildGoogleMerchantFeed() {
     ws.addRow({
       id: p.k,
       title: p.n,
-      desc: `${p.n} — available at Synergy Dynamics Zimbabwe. Quality robotics and electronics components. Buy online and collect in Harare or get nationwide delivery.`,
+      desc: `${p.n} — available at Synergy Robotics Zimbabwe. Quality robotics and electronics components. Buy online and collect in Harare or get nationwide delivery.`,
       link: productUrl(p),
       image: imageUrl(p),
       avail: availability(p.q),
       price: `${usd(p.p)} USD`,
-      brand: p.b === "Generic" ? "Synergy Dynamics" : p.b,
+      brand: p.b === "Generic" ? "Synergy Robotics" : p.b,
       condition: "new",
       gpc: googleCategory(p.c),
       ptype: catNameMap[p.c] ?? p.c,
@@ -317,7 +317,7 @@ async function buildGoogleMerchantFeed() {
 // ─── 2. BRANDED SALES TEAM CATALOG ────────────────────────────────────────────
 async function buildSalesCatalog() {
   const wb = new ExcelJS.Workbook();
-  wb.creator = "Synergy Dynamics";
+  wb.creator = "Synergy Robotics";
   wb.created = new Date();
 
   // -- Cover / Info sheet --
@@ -326,7 +326,7 @@ async function buildSalesCatalog() {
   });
   cover.mergeCells("A1:H1");
   const titleCell = cover.getCell("A1");
-  titleCell.value = "SYNERGY DYNAMICS";
+  titleCell.value = "Synergy Robotics";
   titleCell.font = { bold: true, size: 28, color: { argb: WHITE } };
   titleCell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: BRAND_DARK } };
   titleCell.alignment = { vertical: "middle", horizontal: "center" };
@@ -342,11 +342,11 @@ async function buildSalesCatalog() {
 
   const infoData = [
     ["", ""],
-    ["Company", "Synergy Dynamics (Pvt) Ltd"],
+    ["Company", "Synergy Robotics (Pvt) Ltd"],
     ["Website", "https://www.synergyrobotics.co.zw"],
     ["Location", "Park City Village Mall, Harare, Zimbabwe"],
     ["WhatsApp", "+263 78 XXX XXXX"],
-    ["Email", "sales@synergydynamics.co.zw"],
+    ["Email", "sales@synergyrobotics.co.zw"],
     ["", ""],
     ["Catalog Date", new Date().toLocaleDateString("en-ZW", { day: "numeric", month: "long", year: "numeric" })],
     ["Total Products", `${products.length}`],
@@ -372,7 +372,7 @@ async function buildSalesCatalog() {
   // Title row
   ws.mergeCells("A1:L1");
   const catTitle = ws.getCell("A1");
-  catTitle.value = "SYNERGY DYNAMICS — FULL PRODUCT CATALOG";
+  catTitle.value = "Synergy Robotics — FULL PRODUCT CATALOG";
   catTitle.font = { bold: true, size: 16, color: { argb: WHITE } };
   catTitle.fill = { type: "pattern", pattern: "solid", fgColor: { argb: BRAND_DARK } };
   catTitle.alignment = { vertical: "middle", horizontal: "center" };
@@ -537,7 +537,7 @@ async function buildSalesCatalog() {
 
   priceList.mergeCells("A1:D1");
   const plTitle = priceList.getCell("A1");
-  plTitle.value = "SYNERGY DYNAMICS — PRICE LIST";
+  plTitle.value = "Synergy Robotics — PRICE LIST";
   plTitle.font = { bold: true, size: 16, color: { argb: WHITE } };
   plTitle.fill = { type: "pattern", pattern: "solid", fgColor: { argb: BRAND_DARK } };
   plTitle.alignment = { vertical: "middle", horizontal: "center" };

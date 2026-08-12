@@ -8,7 +8,7 @@ import { ButtonLink } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Synergy Dynamics is a Zimbabwean technology company advancing STEM education and engineering through robotics, electronics, automation and embedded systems.",
+    "Synergy Robotics is a Zimbabwean technology company advancing STEM education and engineering through robotics, electronics, automation and embedded systems.",
   alternates: { canonical: "/about" },
 };
 
@@ -27,9 +27,9 @@ export default function AboutPage() {
       <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
         <div>
           <SectionHeading
-            eyebrow="About Synergy Dynamics"
+            eyebrow="About Synergy Robotics"
             title="Engineering the future of practical learning"
-            description="Synergy Dynamics is a Zimbabwean technology company dedicated to advancing STEM education and engineering through innovative robotics, electronics, automation and embedded systems solutions. We provide practical learning tools and technology experiences that equip students, educators and innovators with the skills needed for the future."
+            description="Synergy Robotics is a Zimbabwean technology company dedicated to advancing STEM education and engineering through innovative robotics, electronics, automation and embedded systems solutions. We provide practical learning tools and technology experiences that equip students, educators and innovators with the skills needed for the future."
           />
           <div className="mt-6 flex gap-3">
             <ButtonLink href="/shop">Shop the Catalogue</ButtonLink>
@@ -39,7 +39,7 @@ export default function AboutPage() {
         <div className="flex justify-center rounded-card border border-border bg-white p-10">
           <Image
             src="/brand/logo.jpeg"
-            alt="Synergy Dynamics official logo"
+            alt="Synergy Robotics official logo"
             width={420}
             height={420}
             className="h-auto w-full max-w-sm"

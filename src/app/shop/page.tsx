@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     "Browse and buy robotics kits, Arduino, Raspberry Pi, ESP32, sensors, motors, IoT modules, electronic components and STEM education kits online in Zimbabwe. Store collection in Harare and nationwide delivery.",
   alternates: { canonical: "/shop" },
   openGraph: {
-    title: "Shop All Products | Synergy Dynamics",
+    title: "Shop All Products | Synergy Robotics",
     description: "Browse robotics kits, development boards, sensors, motors, IoT modules and electronic components.",
     url: "/shop",
-    images: [{ url: "/brand/logo.jpeg", alt: "Synergy Dynamics Shop" }],
+    images: [{ url: "/brand/logo.jpeg", alt: "Synergy Robotics Shop" }],
   },
 };
 

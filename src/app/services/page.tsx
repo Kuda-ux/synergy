@@ -35,7 +35,7 @@ export default function ServicesPage() {
       <SectionHeading
         eyebrow="Engineering services"
         title="Engineering consultation and product development"
-        description="Synergy Dynamics is an engineering partner, not just a parts supplier. Our team designs, builds and supports intelligent systems end to end."
+        description="Synergy Robotics is an engineering partner, not just a parts supplier. Our team designs, builds and supports intelligent systems end to end."
       />
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="custom-projects">

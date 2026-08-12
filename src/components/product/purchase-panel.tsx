@@ -15,7 +15,7 @@ export function PurchasePanel({ product }: { product: CartProductInfo }) {
   const addLine = useCart((s) => s.addLine);
 
   const whatsappText = encodeURIComponent(
-    `Hello Synergy Dynamics, I'd like to enquire about: ${product.name} (SKU ${product.sku}).`,
+    `Hello Synergy Robotics, I'd like to enquire about: ${product.name} (SKU ${product.sku}).`,
   );
 
   return (

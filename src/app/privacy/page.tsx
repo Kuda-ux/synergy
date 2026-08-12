@@ -4,7 +4,7 @@ import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Synergy Dynamics collects, uses and protects your personal information.",
+  description: "How Synergy Robotics collects, uses and protects your personal information.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <h1 className="text-2xl font-semibold sm:text-3xl">Privacy policy</h1>
 
       <p className="mt-4 rounded-card border border-warning/40 bg-warning-surface px-4 py-3 text-sm text-warning">
-        Draft policy — this page requires review and approval by Synergy Dynamics
+        Draft policy — this page requires review and approval by Synergy Robotics
         management (and, where appropriate, legal review) before publication.
       </p>
 

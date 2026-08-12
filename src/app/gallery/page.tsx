@@ -5,7 +5,7 @@ import { SectionHeading, EmptyState } from "@/components/ui/states";
 
 export const metadata: Metadata = {
   title: "Project Gallery",
-  description: "Robotics builds, lab installations and training sessions from Synergy Dynamics.",
+  description: "Robotics builds, lab installations and training sessions from Synergy Robotics.",
   alternates: { canonical: "/gallery" },
 };
 

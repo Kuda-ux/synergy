@@ -4,7 +4,7 @@ import { DELIVERY_METHODS, CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Delivery Information",
-  description: "Store collection, Harare delivery, nationwide courier and international shipping from Synergy Dynamics.",
+  description: "Store collection, Harare delivery, nationwide courier and international shipping from Synergy Robotics.",
   alternates: { canonical: "/delivery" },
 };
 
@@ -38,7 +38,7 @@ export default function DeliveryPage() {
 
       <p className="mt-8 text-xs text-subtle">
         Delivery rates and courier partners are being finalised and will be
-        published here once confirmed by Synergy Dynamics.
+        published here once confirmed by Synergy Robotics.
       </p>
     </div>
   );

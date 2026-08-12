@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
-  description: "Answers about ordering, delivery, payments, collection and institutional purchasing at Synergy Dynamics.",
+  description: "Answers about ordering, delivery, payments, collection and institutional purchasing at Synergy Robotics.",
   alternates: { canonical: "/faq" },
 };
 

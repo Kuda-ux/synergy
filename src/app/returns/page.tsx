@@ -4,7 +4,7 @@ import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Returns and Warranty",
-  description: "Returns process and warranty information for Synergy Dynamics purchases.",
+  description: "Returns process and warranty information for Synergy Robotics purchases.",
   alternates: { canonical: "/returns" },
 };
 
@@ -15,7 +15,7 @@ export default function ReturnsPage() {
       <h1 className="text-2xl font-semibold sm:text-3xl">Returns &amp; warranty</h1>
 
       <p className="mt-4 rounded-card border border-warning/40 bg-warning-surface px-4 py-3 text-sm text-warning">
-        Draft policy — this page requires review and approval by Synergy Dynamics
+        Draft policy — this page requires review and approval by Synergy Robotics
         management before it becomes binding.
       </p>
 

@@ -1,6 +1,6 @@
 /** Central business constants, status unions and navigation config. */
 
-export const SITE_NAME = "Synergy Dynamics";
+export const SITE_NAME = "Synergy Robotics";
 export const SITE_TAGLINE =
   "Zimbabwe's Robotics, Electronics and Intelligent Systems Marketplace";
 export const BRAND_MESSAGE =
@@ -10,8 +10,8 @@ export const CONTACT = {
   phone: "+263 777 938 962",
   phoneHref: "tel:+263777938962",
   whatsappHref: "https://wa.me/263777938962",
-  email: "info@synergydynamics.co.zw",
-  emailHref: "mailto:info@synergydynamics.co.zw",
+  email: "info@synergyrobotics.co.zw",
+  emailHref: "mailto:info@synergyrobotics.co.zw",
   address: {
     line1: "Shop F04, Upstairs",
     line2: "Park City Village Mall",
