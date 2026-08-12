@@ -18,6 +18,7 @@ const categories = [
   { slug:"electronic-components", name:"Electronic Components", icon:"circuit-board",  desc:"Passive components, displays, ICs, relays, batteries and power." },
   { slug:"tools-prototyping",     name:"Tools & Prototyping",   icon:"wrench",         desc:"Breadboards, jumper wires, PCBs, soldering tools and storage." },
   { slug:"stem-education",        name:"STEM Education",        icon:"graduation-cap", desc:"Starter kits and educational packages for learning electronics." },
+  { slug:"drone-technology",       name:"Drone Technology",       icon:"plane",          desc:"Drone frames, motors, controllers and complete drone kits." },
 ];
 
 const brands = ["Arduino","Espressif","Raspberry Pi","Kuongshun","Anycubic","Synergy Robotics","Generic"];
@@ -144,7 +145,7 @@ products.push(
   {s:"dc-voltage-sensor",k:"SN-DCVOLT",n:"DC Voltage Sensor",p:200,q:40,c:"sensors-modules",b:"Generic",ic:"radar"},
   {s:"ne555-timer-ic",k:"EC-NE555",n:"NE555 Timer IC",p:100,q:100,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"zmpt101b-voltage-sensor",k:"SN-ZMPT",n:"ZMPT101B Voltage Sensor",p:500,q:20,c:"sensors-modules",b:"Generic",ic:"radar"},
-  {s:"voltage-regulator",k:"EC-VREG",n:"Voltage Regulator",p:100,q:100,c:"electronic-components",b:"Generic",ic:"circuit-board"},
+  {s:"voltage-regulator",k:"EC-VREG",n:"L7805 Series Voltage Regulator",p:100,q:100,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"traffic-light-module",k:"EC-TRAFF",n:"Traffic-Light Module",p:300,q:30,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"heating-element-12v",k:"EC-HEAT",n:"12V Heating Element",p:1200,q:10,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"bme280-pressure-sensor",k:"SN-BME280",n:"BME280 Pressure Sensor",p:500,q:20,c:"sensors-modules",b:"Generic",ic:"radar"},
@@ -187,7 +188,7 @@ products.push(
   {s:"lithium-ion-battery-pack",k:"BAT-LION",n:"Lithium-Ion Battery Pack",p:1000,q:20,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"external-antenna",k:"EC-ANT",n:"External Antenna",p:300,q:30,c:"iot-wireless",b:"Generic",ic:"wifi"},
   {s:"4ch-logic-level-converter",k:"EC-LLC4",n:"4-Channel Logic-Level Converter",p:400,q:30,c:"electronic-components",b:"Generic",ic:"circuit-board"},
-  {s:"rfid-card",k:"EC-RFIDC",n:"RFID Card",p:100,q:50,c:"electronic-components",b:"Generic",ic:"circuit-board"},
+  {s:"rfid-card",k:"EC-RFIDC",n:"RFID Tag",p:100,q:50,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"raspberry-pi-pico",k:"RPi-PICO",n:"Raspberry Pi Pico",p:1000,q:20,c:"development-boards",b:"Raspberry Pi",ic:"cpu"},
   {s:"battery-charger-3v7",k:"BAT-CHG",n:"3.7V Battery Charger",p:500,q:25,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"5v-mini-water-pump",k:"MT-WP5MINI",n:"5V Mini Water Pump",p:500,q:20,c:"motors-motion",b:"Generic",ic:"cog"},
@@ -199,7 +200,12 @@ products.push(
   {s:"esp32-d8-holder",k:"EC-D8HOLD",n:"ESP32 D8 Holder",p:1500,q:10,c:"electronic-components",b:"Espressif",ic:"circuit-board"},
   {s:"logic-level-converter",k:"EC-LLC",n:"Logic-Level Converter",p:400,q:30,c:"electronic-components",b:"Generic",ic:"circuit-board"},
   {s:"voltage-regulator-713",k:"EC-713VR",n:"713 Voltage Regulator",p:100,q:100,c:"electronic-components",b:"Generic",ic:"circuit-board"},
-  {s:"anycubic-s1-3d-printer",k:"3DP-S1",n:"Anycubic S1 3D Printer with 5kg Filament",p:150000,q:2,c:"tools-prototyping",b:"Anycubic",ic:"wrench",f:true}
+  {s:"anycubic-s1-3d-printer",k:"3DP-S1",n:"Anycubic S1 3D Printer with 5kg Filament",p:150000,q:2,c:"tools-prototyping",b:"Anycubic",ic:"wrench",f:true},
+  {s:"arduino-uno-r3-smd",k:"ARD-UNO-SMD",n:"Arduino Uno R3 SMD",p:700,q:30,c:"development-boards",b:"Arduino",ic:"cpu"},
+  {s:"raspberry-pi-rp2350",k:"RPi-RP2350",n:"Raspberry Pi RP2350 Microcontroller",p:1500,q:15,c:"development-boards",b:"Raspberry Pi",ic:"cpu"},
+  {s:"stm32-microcontroller",k:"STM32F103",n:"STM32 Microcontroller",p:1000,q:20,c:"development-boards",b:"Generic",ic:"cpu"},
+  {s:"attiny88",k:"ATTINY88",n:"ATtiny88 Microcontroller",p:1000,q:20,c:"development-boards",b:"Generic",ic:"cpu"},
+  {s:"f450-drone-kit",k:"DRN-F450",n:"F450 Full Drone Kit",p:50000,q:5,c:"drone-technology",b:"Generic",ic:"bot"},
 );
 
 async function main() {
